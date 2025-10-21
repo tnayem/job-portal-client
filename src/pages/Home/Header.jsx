@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../../context/AuthContext';
 
 const Header = () => {
+    const{user} = use(AuthContext)
     const navLink = <>
         <li><NavLink to="/">Home</NavLink></li>
     </>
@@ -26,7 +28,10 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn" to="/login">Login</Link>
+                {
+                    user?<Link className="btn">Log Out</Link>:<><Link className="btn" to="/login">Login</Link></>
+                }
+                
             </div>
         </div>
     );
