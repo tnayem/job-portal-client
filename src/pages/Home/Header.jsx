@@ -1,9 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Header = () => {
     const navLink = <>
-        <NavLink to="/"><li><a>Home</a></li></NavLink>
+        <li><NavLink to="/">Home</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -15,7 +15,7 @@ const Header = () => {
                     <ul
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                       {navLink}
+                        {navLink}
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">daisyUI</a>
@@ -26,7 +26,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <Link className="btn" to="/login">Login</Link>
             </div>
         </div>
     );
