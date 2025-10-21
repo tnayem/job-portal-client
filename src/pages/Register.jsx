@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 
 const Register = () => {
     const { createUser } = useContext(AuthContext)
-    console.log(createUser);
     const handleRegister = (e) => {
         e.preventDefault()
         const form = e.target

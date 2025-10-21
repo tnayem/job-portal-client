@@ -1,14 +1,23 @@
 import React from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router';
+import { use } from 'react';
 
 const Login = () => {
+    const{logIn}= use(AuthContext)
     const handleLogin=(e)=>{
         e.preventDefault()
         const form = e.target 
         const email = form.email.value
         const password = form.password.value
         console.log(email,password);
+        logIn(email,password)
+        .then(result=>{
+            console.log(result);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
     }
     return (
         <div className='flex flex-col justify-center min-h-screen'>
