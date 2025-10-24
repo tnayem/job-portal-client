@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const JobCard = ({ job }) => {
-    const { title,_id, location, jobType, company, company_logo, description, hr_email, hr_name, category,
-        applicationDeadline, requirements, salaryRange } = job
+    const { _id, location, company, company_logo, description,requirements, salaryRange } = job
     console.log(job);
     return (
         <div className="card bg-base-100 shadow-sm">
@@ -19,10 +18,10 @@ const JobCard = ({ job }) => {
                 </div>
             </div>
             <div className="card-body">
-                <h2 className="card-title">
+                {/* <h2 className="card-title">
                     Card Title
                     <div className="badge badge-secondary">NEW</div>
-                </h2>
+                </h2> */}
                 <p>Selary: {salaryRange.min}-{salaryRange.max}-{salaryRange.currency}</p>
                 <p>{description}</p>
                 <div className="card-actions">
@@ -31,7 +30,7 @@ const JobCard = ({ job }) => {
                     }
                 </div>
                 <div className="card-actions justify-end">
-                    <Link to={`jobs/:${_id}`}><button className="btn btn-primary">Apply Now</button></Link>
+                    <Link to={`jobs/${_id}`}><button className="btn btn-primary">Show Details</button></Link>
                 </div>
             </div>
         </div>
