@@ -6,6 +6,16 @@ const Header = () => {
     const{user,logOut} = use(AuthContext)
     const navLink = <>
         <li><NavLink to="/">Home</NavLink></li>
+        {
+            user && <>
+            <li><NavLink to="/myApplications">My Applications</NavLink></li>
+            </>
+        },
+        {
+            user && <>
+            <li><NavLink to="/addJob">Add Job</NavLink></li>
+            </>
+        }
     </>
     const handleLogOut=()=>{
         logOut()
