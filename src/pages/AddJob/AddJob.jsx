@@ -42,10 +42,10 @@ const AddJob = () => {
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                 <legend className="fieldset-legend">Job Type</legend>
                 <div className="filter">
-                    <input className="btn filter-reset" type="radio" name="job_type" aria-label="All" />
-                    <input value="On-Site" className="btn" type="radio" name="job_type" aria-label="On-Site" />
-                    <input value="Remote" className="btn" type="radio" name="job_type" aria-label="Remote" />
-                    <input value="Hybrid" className="btn" type="radio" name="job_type" aria-label="Hybrid" />
+                    <input className="btn filter-reset" type="radio" name="jobType" aria-label="All" />
+                    <input value="On-Site" className="btn" type="radio" name="jobType" aria-label="On-Site" />
+                    <input value="Remote" className="btn" type="radio" name="jobType" aria-label="Remote" />
+                    <input value="Hybrid" className="btn" type="radio" name="jobType" aria-label="Hybrid" />
                 </div>
             </fieldset>
             {/* Job Category */}
@@ -61,7 +61,7 @@ const AddJob = () => {
             {/* Application Dadeline */}
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                 <legend className="fieldset-legend">Application Dadeline</legend>
-                <input type="date" className="input" />
+                <input type="date" name='applicationDeadline' className="input" />
             </fieldset>
             {/* Selary Range */}
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
@@ -108,9 +108,9 @@ const AddJob = () => {
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                 <legend className="fieldset-legend">HR Info</legend>
                 <label className="label">HR Name</label>
-                <input type="text" name='HR_name' className="input" placeholder="HR Name" />
+                <input type="text" name='hr_name' className="input" placeholder="HR Name" />
                 <label className="label">HR Email</label>
-                <input type="email" name='HR_email' className="input" placeholder="HR Email" />
+                <input type="email" name='hr_email' className="input" placeholder="HR Email" />
             </fieldset>
             <input type="submit" className='btn btn-primary' value="Add Job" />
         </form>
