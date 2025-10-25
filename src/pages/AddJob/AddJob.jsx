@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 
 const AddJob = () => {
@@ -6,11 +7,20 @@ const AddJob = () => {
         const form = e.target;
         const formData = new FormData(form)
         const data = Object.fromEntries(formData.entries())
-        const {selary_max,selary_min,currency, ...newJobs} = data
-        newJobs.salaryRange={selary_max,selary_min,currency}
-        newJobs.job_requirements = newJobs.job_requirements.split(",").map(req=>req.trim())
+        const {max,min,currency, ...newJobs} = data
+        newJobs.salaryRange={max,min,currency}
+        newJobs.requirements = newJobs.requirements.split(",").map(req=>req.trim())
         newJobs.responsibilities = newJobs.responsibilities.split(",").map(res=>res.trim())
+        newJobs.status = "active"
         console.log(newJobs);
+        // save to the database
+        axios.post('http://localhost:3000/jobs',newJobs)
+        .then(result=>{
+            console.log(result.data);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -60,12 +70,12 @@ const AddJob = () => {
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-3'>
                     <div>
                         <label className="label">Minimum Selary</label>
-                        <input type="text" name='selary_min' className="input" placeholder="Minimum Selary" />
+                        <input type="number" name='min' className="input" placeholder="Minimum Selary" />
                     </div>
 
                     <div>
                         <label className="label">Maximum Selary</label>
-                        <input type="text" name='selary_max' className="input" placeholder="Maximum Selary" />
+                        <input type="number" name='max' className="input" placeholder="Maximum Selary" />
                     </div>
 
                     <div>
@@ -87,7 +97,7 @@ const AddJob = () => {
             {/* Job Requirements*/}
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                 <legend className="fieldset-legend">Job Requirements</legend>
-                <textarea name='job_requirements' className="textarea" placeholder="Job Requirements (separeted by coma)"></textarea>
+                <textarea name='requirements' className="textarea" placeholder="Job Requirements (separeted by coma)"></textarea>
             </fieldset>
             {/* Job Responsibilities*/}
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
