@@ -8,7 +8,7 @@ const MyPostedJobs = () => {
     return (
         <div>
            <Suspense fallback={"My Posted Jobs Loading"}>
-                <MyPostedJobsList myPostedJobs = {createdJobsPromiss(user.email)}></MyPostedJobsList>
+                <MyPostedJobsList myPostedJobs = {createdJobsPromiss(user.email,user.accessToken)}></MyPostedJobsList>
            </Suspense>
         </div>
     );
